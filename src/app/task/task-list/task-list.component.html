@@ -1,0 +1,19 @@
+<ul class="flex-container">
+    <li  *ngFor="let item of tasks$ | async" class="flex-item">
+        <p>
+            {{ item.description  }}
+        </p >
+        <p>
+            {{item.end_flag ? "done":"pending"}}
+        </p >
+        <span *ngFor="let cat of   item.categories ">
+            <h3 [style.color]="cat.color">
+                {{cat.name}}          
+            </h3>
+        </span>
+        <a [routerLink]="['/tasks/show', item.id]">details</a>
+    </li>
+</ul>
+
+
+

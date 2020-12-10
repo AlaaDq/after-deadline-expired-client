@@ -1,0 +1,23 @@
+
+.flex-container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-item {
+background-color: dodgerblue;
+    padding: 5px;
+    width: 25%;
+    height: auto;
+    /* margin-top: 10px;*/
+    margin: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+}
