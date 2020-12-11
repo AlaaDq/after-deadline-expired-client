@@ -1,19 +1,55 @@
-<ul class="flex-container">
-    <li  *ngFor="let item of tasks$ | async" class="flex-item">
-        <p>
-            {{ item.description  }}
-        </p >
-        <p>
-            {{item.end_flag ? "done":"pending"}}
-        </p >
-        <span *ngFor="let cat of   item.categories ">
-            <h3 [style.color]="cat.color">
-                {{cat.name}}          
-            </h3>
-        </span>
-        <a [routerLink]="['/tasks/show', item.id]">details</a>
-    </li>
-</ul>
+<div class="search-div">
+    <mat-form-field class="search-form-field" floatLabel="never">
+      <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="tasks" matSort>
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>id</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>description</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.description}}</mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="deadline">
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>deadline</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.deadline}}</mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="end_flag">
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>end_flag</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.end_flag}}</mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="categories">
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>
+                categories <br>color , name
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element" style="    display: flex;
+            flex-direction: column; align-items: flex-start;">
+                <ng-container *ngFor="let cat of element.categories" >
+                    <span [style.color]="cat.color">
+                        {{cat.color}}
+                    </span>
+                    <span>
+                        {{cat.name}}
+                    </span>
+                </ng-container>
+            </mat-cell>
+          </ng-container>
+
+   
 
 
+          
 
+        <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+      
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+
+</div>

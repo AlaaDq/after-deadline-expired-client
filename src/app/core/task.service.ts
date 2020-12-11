@@ -4,6 +4,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,9 @@ import { Router } from '@angular/router';
 
 export class TaskService {
     baseUrl: string = 'http://localhost:8000/api/';
+    headers:HttpHeaders; 
 
-    constructor(private http: HttpClient,private router:Router) { }
+    constructor(private http: HttpClient,private router:Router,private authService:AuthService) { }
 
       
 // addQuote(content: string) {
@@ -21,10 +23,9 @@ export class TaskService {
 //     return this.http.post( this.baseUrl + 'quote', body, {headers: headers})
 //   }
 
-  getQuotes(): Observable<any> {
-    // const headers = new HttpHeaders({'Authorization':  "Bearer " + this.authService.getToken() });
-    // return this.http.get<>( this.baseUrl + 'quotes',{headers: headers})
-    return this.http.get<any>( this.baseUrl + 'tasks')
+  get(): Observable<any> {
+    this.headers= new HttpHeaders({'Authorization':  "Bearer " + this.authService.getToken() });
+    return this.http.get<any>( this.baseUrl + 'tasks', {headers: this.headers} )
     .pipe(
         catchError(this.handleError)
     );
@@ -32,8 +33,10 @@ export class TaskService {
   }
 
   show(id:number){
-    return this.http.get<any>( this.baseUrl + 'tasks/' + id)
+    this.headers= new HttpHeaders({'Authorization':  "Bearer " + this.authService.getToken() });
+    return this.http.get<any>( this.baseUrl + 'tasks/' + id,{headers: this.headers})
     .pipe(
+        map((data)=>{return data}),
         catchError(this.handleError)
     );
   }
@@ -48,11 +51,17 @@ export class TaskService {
   }
 
   store(data:any){
-      const headers=new HttpHeaders().set('Content-Type','application/json');
-     return this.http.post(this.baseUrl+'tasks',data,{headers:headers})
+    //   const headers=new HttpHeaders().set('Content-Type','application/json');
+      this.headers= new HttpHeaders({'Authorization':  "Bearer " + this.authService.getToken(),'Content-Type':'application/json' });
+
+     return this.http.post(this.baseUrl+'tasks',data,{headers:this.headers})
       .pipe(
           tap(data=>console.log(data)),
           catchError((err)=>this.handleError(err))
       )
+  }
+
+  search(text:string){
+
   }
 }

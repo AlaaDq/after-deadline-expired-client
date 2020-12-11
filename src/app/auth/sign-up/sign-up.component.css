@@ -1,0 +1,15 @@
+form{
+    margin-top: 8%;
+    background-color: blueviolet;
+    padding: 40px 22px 40px 22px;    
+}
+label,small{
+    margin-left: 16%;
+}
+button{
+    margin-left: 15%;
+}
+input{
+    width: 70%;
+    margin: auto;
+}

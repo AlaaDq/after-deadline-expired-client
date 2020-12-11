@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { AuthService } from '../core/auth.service';
+import { IUser } from '../shared/interfaces';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+    authState$:BehaviorSubject<boolean>;
+    user$:BehaviorSubject<IUser>;
 
-  ngOnInit(): void {
-  }
+    constructor(private authService:AuthService  )
+    {
+        this.authState$ =this.authService.authStatus$;
+        this.user$ =this.authService.user$;
+        console.log(this.authState$);
+        console.log(this.user$);
+    }
+
+    ngOnInit(): void {
+    }
 
 }

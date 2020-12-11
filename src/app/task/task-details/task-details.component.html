@@ -1,3 +1,20 @@
-<li >
-{{task | json}}
-</li>
+
+<div class="container bg-primary text-white" style="padding:30px">
+
+    <div *ngFor='let item of  (task | keyvalue)' class="row" >
+        {{item.key}}: {{item.value}}
+    </div>
+
+    <div *ngFor='let cat of  categories' class="row">
+        <div *ngFor='let item of  (cat | keyvalue)' >
+            {{item.key}}: {{item.value}}
+        </div>
+    </div>
+
+    <div *ngFor='let cat of  subtasks' class="row">
+        <div *ngFor='let item of  (cat | keyvalue)' >
+            {{item.key}}: {{item.value}}
+        </div>
+    </div>
+    
+</div>

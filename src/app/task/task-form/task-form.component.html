@@ -5,7 +5,7 @@
         <mat-error>This field is mandatory.</mat-error>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field >
         <input formControlName="created_at" matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date & time" >
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
@@ -18,7 +18,7 @@
         <mat-datepicker #picker2></mat-datepicker>
     </mat-form-field>
 
-    <mat-radio-group formControlName="end_flag">
+    <mat-radio-group formControlName="end_flag" >
         <mat-radio-button value="0">False</mat-radio-button>
         <mat-radio-button value="1">True</mat-radio-button>
     </mat-radio-group>
@@ -54,7 +54,7 @@
         </div>
         <button mat-raised-button type="button" (click)="addSubTask()">Add</button>
     </div>
-    <button mat-raised-button type="button" (click)="submit()" [disabled]="!taskForm.valid">Add</button>
+    <button mat-raised-button type="button" (click)="submit()" [disabled]="!taskForm.valid">save</button>
 
 </form>
 

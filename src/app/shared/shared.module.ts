@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {  ReactiveFormsModule } from "@angular/forms";
+import {  FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatrialModule} from '../matrial/matrial.module';
 
 
@@ -10,9 +10,10 @@ import { MatrialModule} from '../matrial/matrial.module';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     MatrialModule
     // FormsModule,
   ],
-  exports:[ReactiveFormsModule,MatrialModule]
+  exports:[ReactiveFormsModule,MatrialModule,FormsModule]
 })
 export class SharedModule { }

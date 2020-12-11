@@ -8,12 +8,14 @@ import { SharedModule} from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +25,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     SharedModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorDialogComponent],
+
 })
 export class AppModule { }
