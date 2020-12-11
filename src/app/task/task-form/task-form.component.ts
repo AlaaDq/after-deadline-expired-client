@@ -14,8 +14,7 @@ export class TaskFormComponent implements OnInit {
 
     taskForm: FormGroup ;
 
-  constructor(private fb: FormBuilder , private taskService:TaskService) {
-   }
+  constructor(private fb: FormBuilder , private taskService:TaskService) {}
 
   ngOnInit(): void {
     this.taskForm = this.fb.group({
@@ -30,8 +29,11 @@ export class TaskFormComponent implements OnInit {
             })
         ]),
         subTasks: this.fb.array([
-            ['',Validators.required]
+            this.fb.group({
+                content:['',Validators.required]
+            })
         ])
+
       });
 
      console.log(this.taskForm.controls.value) 
@@ -57,8 +59,10 @@ export class TaskFormComponent implements OnInit {
     })
   }
 
-  newSubTask(): FormControl {
-    return this.fb.control('')
+  newSubTask(): FormGroup {
+    return  this.fb.group({
+        content:['',Validators.required]
+    })
   }
 
   addSubTask(){

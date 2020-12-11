@@ -21,3 +21,7 @@ background-color: dodgerblue;
     font-size: 1em;
     text-align: center;
 }
+
+.container{
+    overflow: hidden;
+}

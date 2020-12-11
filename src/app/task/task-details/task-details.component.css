@@ -1,0 +1,22 @@
+
+  
+.c{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 100px;
+    width: 700px;
+    background: dodgerblue;
+    align-items: center;
+    margin: 100px auto;
+    border-radius: 20px;
+}
+.c p,h3{
+    margin :30px;
+}
+
+*{
+    font-weight: bolder;
+    color: black;
+
+}

@@ -85,4 +85,23 @@ export class AuthService {
   isAuth(){
       return this.authStatus$.value;
   }
+
+  user(){
+    return this.http.get<any>(this.baseUrl + 'user',
+    {headers: new HttpHeaders({'X-Requested-With': 'XMLHttpRequest','Authorization':  "Bearer " + this.getToken()})})
+    .pipe(
+        tap((response:any)=>{let currentState= response.email ? true:false;this.updateAuthStatus(currentState,response);}),
+    );
+  }
+
+  logout(){
+   return this.http.get<any>(this.baseUrl + 'logout',
+    {headers: new HttpHeaders({'X-Requested-With': 'XMLHttpRequest','Authorization':  "Bearer " + this.getToken()})})
+    .pipe(
+        tap((res:any)=>{
+            this.updateAuthStatus(false,intialUser);
+            localStorage.removeItem('token');
+        })
+    )
+  }
 }

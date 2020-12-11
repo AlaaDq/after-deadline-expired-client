@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import {TaskService} from '../../core/task.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -22,7 +20,8 @@ export class TaskListComponent implements OnInit {
         'description',
         'deadline',
         'end_flag',
-        'categories'];
+        'categories',
+        'actions'];
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(MatPaginator) paginator: MatPaginator;
     searchKey: string;
@@ -43,9 +42,9 @@ export class TaskListComponent implements OnInit {
               return this.columns.some(ele => {
                 //   console.log(ele)
                 //   console.log(data[ele])
-                  if(ele!="categories")
+                  if(ele!="categories" && ele!="actions")
                     return  data[ele].toString().toLowerCase().indexOf(filter) != -1;
-                else{
+                else if(ele!="actions"){
                     // console.log("else",ele)
                     return  data[ele].some((cat:any)=>
                     {
@@ -68,6 +67,10 @@ export class TaskListComponent implements OnInit {
 
   applyFilter() {
     this.tasks.filter = this.searchKey.trim().toLowerCase();
+  }
+
+  details(id:number){
+      this.router.navigate(['/tasks/show',id]);
   }
  
 

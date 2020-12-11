@@ -1,12 +1,13 @@
 <div>
     <div>
         <p>
-            Reason: 
-            <!-- {{ data.reason }} -->
+            
+            {{ data?.message }}
         </p>
-        <p>
-            Status: 
-            <!-- {{ data.status }} -->
-        </p>
+        <ng-container *ngIf="data.errors">
+            <p *ngFor='let error of  (data.errors | keyvalue)'>
+                {{error.key}} : {{error.value}}
+            </p>
+        </ng-container>
     </div>
 </div>

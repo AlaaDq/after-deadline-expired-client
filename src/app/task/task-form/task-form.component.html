@@ -1,28 +1,30 @@
-<form [formGroup]="taskForm" >
 
+
+    <form [formGroup]="taskForm" >
+        
     <mat-form-field>
         <input formControlName="description" matInput placeholder="description*">
         <mat-error>This field is mandatory.</mat-error>
     </mat-form-field>
-
+    
     <mat-form-field >
         <input formControlName="created_at" matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date & time" >
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
     </mat-form-field>
-
-
+    
+    
     <mat-form-field>
         <input formControlName="deadline" matInput [matDatepicker]="picker2" placeholder="deadline">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
     </mat-form-field>
-
+    
     <mat-radio-group formControlName="end_flag" >
         <mat-radio-button value="0">False</mat-radio-button>
         <mat-radio-button value="1">True</mat-radio-button>
     </mat-radio-group>
-
+    
     <div formArrayName="categories" >
         <div  *ngFor="let category of categories.controls; let i=index;">
             <div  [formGroupName]="i">
@@ -30,7 +32,7 @@
                     <input formControlName="name" matInput placeholder="name*">
                     <mat-error>This field is mandatory.</mat-error>
                 </mat-form-field>
-        
+                
                 <mat-form-field >
                     <input formControlName="color" matInput placeholder="color*">
                     <mat-error>This field is mandatory.</mat-error>
@@ -40,22 +42,24 @@
         </div>
         <button mat-raised-button type="button" (click)="addCategory()">Add</button>
     </div>
-
-
-
+    
+    
+    
     
     <div formArrayName="subTasks" >
         <div  *ngFor="let subTask of subTasks.controls; let i=index;">
+            <div [formGroupName]="i">
                 <mat-form-field >
-                    <input  [formControlName]="i" matInput placeholder="subTask*">
+                    <input  formControlName="content" matInput placeholder="subTask*">
                     <mat-error>This field is mandatory.</mat-error>
                 </mat-form-field>
                 <button mat-raised-button (click)="removeSubTask(i)">Remove</button>
+            </div>
         </div>
         <button mat-raised-button type="button" (click)="addSubTask()">Add</button>
     </div>
     <button mat-raised-button type="button" (click)="submit()" [disabled]="!taskForm.valid">save</button>
-
+    
 </form>
 
-{{this.taskForm.value | json}}
+<!-- {{this.taskForm.value | json}} -->

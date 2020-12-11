@@ -1,8 +1,13 @@
+
+*{
+    font-weight: bolder;
+    color: black;
+}
+
 form{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 100px;
     background: dodgerblue;
     width: 700px;
     align-items: center;
@@ -18,3 +23,5 @@ mat-radio-button {
 
     margin: 10px 16px;
 }
+
+
