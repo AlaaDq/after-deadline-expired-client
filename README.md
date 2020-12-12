@@ -1,27 +1,23 @@
-# NgTradinos
+# client app NgTradinos
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
+# task list with tasks’ categories displayed in their colors and a link to details page of each task
 
-## Development server
+![tasks-list](https://user-images.githubusercontent.com/45366622/101993211-79844b80-3cc1-11eb-84bf-08888df39113.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+# search support even for related categories column (with pagination and sorting)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![search by any column like category](https://user-images.githubusercontent.com/45366622/101993214-8012c300-3cc1-11eb-8591-8b4d311550da.png)
 
-## Build
+# The task form with the required information to submit the form as dynamic form
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+![task form creation with cat and stask](https://user-images.githubusercontent.com/45366622/101993222-8739d100-3cc1-11eb-9676-a2595bae3b8e.png)
 
-## Running unit tests
+# server-side validation support using interceptors and angular matrial
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![server side validation messages](https://user-images.githubusercontent.com/45366622/101993231-9b7dce00-3cc1-11eb-8c6c-3094ff849882.png)
 
-## Running end-to-end tests
+![server side validation message support ](https://user-images.githubusercontent.com/45366622/101993248-b2242500-3cc1-11eb-8590-f65bec248e42.png)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# client-side validation support 
+![client side validation](https://user-images.githubusercontent.com/45366622/101993251-b7816f80-3cc1-11eb-99d5-f90770a304dc.png)
